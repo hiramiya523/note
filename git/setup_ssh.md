@@ -18,3 +18,13 @@
 
 1. 
   ssh -T git@github.com
+
+
+1. https to ssh
+git remote -v
+
+# HTTPS -> SSH
+git remote set-url origin  git@github.com:USERNAME/REPOSITORY.git
+
+# SSH -> HTTPS
+git remote set-url origin  https://github.com/USERNAME/REPOSITORY.git
