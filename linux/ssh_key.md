@@ -18,4 +18,4 @@ vim /etc/ssh/sshd_config
 sudo service ssh restart
 
 1. make sure you can connect
-ssh -i ~/.ssh/vps_id_rsa ubuntu@133.242.157.207
+ssh -i ~/.ssh/vps_id_rsa ubuntu@000.000.000.000

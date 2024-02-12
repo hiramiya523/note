@@ -7,4 +7,3 @@ sudo chmod u+x nvim.appimage
 
 - パスを通す
 sudo ln -s $(pwd)/nvim.appimage /usr/bin/nvim
-
