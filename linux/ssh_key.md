@@ -19,3 +19,19 @@
 
 1. make sure you can connect
   ssh -i ~/.ssh/vps_id_rsa ubuntu@000.000.000.000
+
+# prohibit login by password
+```
+PasswordAuthentication no
+```
+  sudo service sshd  restart
+
+# change ssh litsen port
+```
+ Port XXXX
+```
+
+6回/30秒 接続を試みたIPを許可しない
+```
+sudo ufw limit <port>
+```
