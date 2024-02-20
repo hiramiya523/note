@@ -1,0 +1,12 @@
+[user]
+        email = example@aaa.com
+        name = hiramiya523
+[init]
+        defaultBranch = main
+
+[alias]
+        st = status
+        cm = commit
+        cmm = commit -m
+        co = checkout
+        wip = !git add . && git commit -m 'wip' && git push
