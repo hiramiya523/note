@@ -10,3 +10,6 @@
         cmm = commit -m
         co = checkout
         wip = !git add . && git commit -m 'wip' && git push
+
+        # 特定のコミットを戻す
+        rv = git revert
