@@ -5,11 +5,25 @@
         defaultBranch = main
 
 [alias]
+        alias = !sh -c 'git config --list | grep ^alias\\. '
+        # alias = !"if test -z $1; then loop=; for k in `git config --get-regexp ^alias\\. | sort | sed -e 's/^alias\\.\\(\\S*\\).*/\\1/g'`; do echo -n $k; loop="${loop}1"; if test ${#loop} -lt 5; then echo -n '\t'; else echo; loop=; fi; done; exit; fi; git config --list | grep ^alias\\.$1= | sed -e s/^alias\\.//; exit;"
+
         st = status
         cm = commit
         cmm = commit -m
         co = checkout
         wip = !git add . && git commit -m 'wip' && git push
 
-        # 特定のコミットを戻す
+        # コミット取り消し
+        #  git reset --soft HEAD^
+
+        # 特定のコミットに戻す
         rv = git revert
+
+        # stash
+        sta = git stash apply
+        # git stash list
+        stm = git stash save
+        # git stash clear // 全削除
+        # git stash push -m "stash name" -- filepath
+        stf = git stash push -- 
