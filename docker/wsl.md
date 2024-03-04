@@ -12,3 +12,6 @@
     detach vdisk
     exit
   ```
+
+- logファイルの場所
+  \\wsl$\docker-desktop-data\data\docker\containers
