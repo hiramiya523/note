@@ -14,8 +14,14 @@
         co = checkout
         wip = !git add . && git commit -m 'wip' && git push
 
+        #  rm cached
+        # git rm -r --cached .
+
         # コミット取り消し
         #  git reset --soft HEAD^
+
+        # パスワードをキャッシュを有効化する
+        # git config --global credential.helper cache
 
         # 特定のコミットに戻す
         rv = git revert
