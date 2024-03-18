@@ -1,4 +1,4 @@
-[user]
+# [user]
         email = example@aaa.com
         name = hiramiya523
 [init]
@@ -9,10 +9,23 @@
         # alias = !"if test -z $1; then loop=; for k in `git config --get-regexp ^alias\\. | sort | sed -e 's/^alias\\.\\(\\S*\\).*/\\1/g'`; do echo -n $k; loop="${loop}1"; if test ${#loop} -lt 5; then echo -n '\t'; else echo; loop=; fi; done; exit; fi; git config --list | grep ^alias\\.$1= | sed -e s/^alias\\.//; exit;"
 
         st = status
-        cm = commit
-        cmm = commit -m
+        ad = add
+        cm = commit -m
         co = checkout
         wip = !git add . && git commit -m 'wip' && git push
+
+        sw = switch
+        df = diff
+
+        bc = branch
+        # git branch -D hoge-branch 削除
+        # git branch -vv  Upstream確認
+        # git diff brancA branchB
+
+        # リモートbranchを持ってくる
+        # git fetch origin hoge-branch
+        # リモートbranchを取り込めているか確認
+        # git branch -r
 
         #  rm cached
         # git rm -r --cached .
@@ -28,8 +41,14 @@
 
         # stash
         sta = git stash apply
+        # git stash pop apply & delete
+
         # git stash list
         stm = git stash save
         # git stash clear // 全削除
-        # git stash push -m "stash name" -- filepath
+
+        #  git diff stash@{0} //差分
+
+        # specify file
+        # usage: git stash push -m "stash name" -- filepath
         stf = git stash push -- 
