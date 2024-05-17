@@ -22,16 +22,23 @@
         # git branch -vv  Upstream確認
         # git diff brancA branchB
 
-        # リモートbranchを持ってくる
-        # git fetch origin hoge-branch
-        # リモートbranchを取り込めているか確認
+        # 1. リモートbranchを持ってくる
+        # git fetch origin hoge-branch 
+        # 2. リモートbranchを取り込めているか確認
         # git branch -r
+        # 3. 名前つけなくていいなら、リモート指定でよい
+        # git co -b 1.5-feat-#28-attracting-customer
+
+        # リモートになく、手元に残ったブランチをクリア
+        # git fetch --prune
 
         #  rm cached
         # git rm -r --cached .
 
         # コミット取り消し
         #  git reset --soft HEAD^
+        # コミット履歴ごと消せる
+        #  git reset --herd {id}
 
         # パスワードをキャッシュを有効化する
         # git config --global credential.helper cache
@@ -41,7 +48,7 @@
 
         # stash
         sta = git stash apply
-        # git stash pop apply & delete
+        # git stash pop  -> apply&delete
 
         # git stash list
         stm = git stash save
@@ -52,3 +59,16 @@
         # specify file
         # usage: git stash push -m "stash name" -- filepath
         stf = git stash push -- 
+
+
+        # merge 関連
+        # - dry-runする
+        # 1 コンフリクトするか確認できる
+        # git merge --no-commit --no-ff <branch>
+        # Note: ffは Fast Forward Merge、マージコミットを必ず残したい。追跡が容易になるので。
+        
+        # 2 取り消し
+        # git merge --abort
+
+        # 派生元確認
+        # git show-branch | grep '*' | grep -v "$(git rev-parse --abbrev-ref HEAD)" | head -1 | awk -F'[]~^[]' '{print $2}'

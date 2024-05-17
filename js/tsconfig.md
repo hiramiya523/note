@@ -1,0 +1,2 @@
+Node.jsはそれ自身ではTypeScriptをサポートしているわけではないため、TypeScriptの導入をする時はTypeScriptの設定ファイルであるtsconfig.jsonが必要です。
+https://typescriptbook.jp/reference/tsconfig/tsconfig.json-settings

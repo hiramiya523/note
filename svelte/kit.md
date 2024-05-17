@@ -7,3 +7,8 @@
     DBアクセス、APIキーのようなプライベートな環境変数にアクセスする場合に利用される。
 
 load関数はpage.ts(page.js)ファイルまたは+page.server.ts(+page.server.js)ファイルで定義することができます。page.tsで定義したload関数はサーバまたはクライアントで実行されますが+page.server.jsで定義したload関数は必ずサーバで実行されます。
+
+
+- ディレクトリ構成
+公式
+https://kit.svelte.dev/docs/project-structure
