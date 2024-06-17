@@ -10,12 +10,25 @@
 
         st = status
         ad = add
+
         cm = commit -m
+        # 直前コミットの取り下げ(push前)
+        # git reset --soft HEAD^
+
+
         co = checkout
         wip = !git add . && git commit -m 'wip' && git push
-
         sw = switch
         df = diff
+
+
+        # push
+        # - ローカルと、リモートブランチ名が異なる場合、
+        # git push origin HEAD:feat-1.5-#31-pay-form
+
+
+# remote
+# git remote -v  オリジン確認
 
         bc = branch
         # git branch -D hoge-branch 削除
@@ -26,8 +39,9 @@
         # git fetch origin hoge-branch 
         # 2. リモートbranchを取り込めているか確認
         # git branch -r
-        # 3. 名前つけなくていいなら、リモート指定でよい
-        # git co -b 1.5-feat-#28-attracting-customer
+        # 3. 
+        # git co -b hoge origin/hoge
+        # 4. 確認 git branch -vv
 
         # リモートになく、手元に残ったブランチをクリア
         # git fetch --prune
@@ -62,6 +76,7 @@
 
 
         # merge 関連
+        mg = git merge --no-commit --no-ff
         # - dry-runする
         # 1 コンフリクトするか確認できる
         # git merge --no-commit --no-ff <branch>
