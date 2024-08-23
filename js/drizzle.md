@@ -2,6 +2,13 @@
 bun add drizzle-orm postgres
 bun add -D drizzle-kit
 
+pnpm add drizzle-orm postgres
+pnpm add -D drizzle-kit
+
+pnpm i dotenv
+<!-- Note: Connection作るのに必要 -->
+pnpm add -D  @types/pg
+
 - studio使いたいなら
   bun add -D pg
 
@@ -39,6 +46,7 @@ driver: "pg",
 
 - ts/js ファイルで定義した、マイグレーションを実行
   bunx drizzle-kit push:pg
+  bunx drizzle-kit push
 
 - studio
   bunx drizzle-kit studio --host 0.0.0.0 --port 3000

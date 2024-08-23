@@ -7,20 +7,18 @@
 [alias]
         alias = !sh -c 'git config --list | grep ^alias\\. '
         # alias = !"if test -z $1; then loop=; for k in `git config --get-regexp ^alias\\. | sort | sed -e 's/^alias\\.\\(\\S*\\).*/\\1/g'`; do echo -n $k; loop="${loop}1"; if test ${#loop} -lt 5; then echo -n '\t'; else echo; loop=; fi; done; exit; fi; git config --list | grep ^alias\\.$1= | sed -e s/^alias\\.//; exit;"
-
-        st = status
+        ss = status
         ad = add
-
         cm = commit -m
         # 直前コミットの取り下げ(push前)
         # git reset --soft HEAD^
-
 
         co = checkout
         wip = !git add . && git commit -m 'wip' && git push
         sw = switch
         df = diff
-
+        # pull => git fetch && git merge origin/hogeFuga
+        pl = pull
 
         # push
         # - ローカルと、リモートブランチ名が異なる場合、
@@ -28,8 +26,7 @@
 
 
 # remote
-# git remote -v  オリジン確認
-
+# git remote -v  オリジン確認s
         bc = branch
         # git branch -D hoge-branch 削除
         # git branch -vv  Upstream確認
@@ -39,9 +36,11 @@
         # git fetch origin hoge-branch 
         # 2. リモートbranchを取り込めているか確認
         # git branch -r
-        # 3. 
-        # git co -b hoge origin/hoge
+        # 3. git co -b hoge origin/hoge (git co -b hoge)
         # 4. 確認 git branch -vv
+
+        # ローカルだけで作りたいときは、
+        # git checkout -b hoge だけ
 
         # リモートになく、手元に残ったブランチをクリア
         # git fetch --prune
@@ -49,8 +48,21 @@
         #  rm cached
         # git rm -r --cached .
 
+        # ローカルで作ったブランチを、リモートにプッシュ
+        # 1. git checkout -b new-branch main
+        # 3. git push -u origin new-branch
+
+        # ブランチ名：変更
+        # git branch -m old-name new-name
+
+        # コミット数
+        cnt = git rev-list --count
+
+# ステージング取り消し
+        # git reset HEAD // 全部
+
         # コミット取り消し
-        #  git reset --soft HEAD^
+        #  git reset --soft HEAD^ // 直前のみ
         # コミット履歴ごと消せる
         #  git reset --herd {id}
 
@@ -59,24 +71,37 @@
 
         # 特定のコミットに戻す
         rv = git revert
+        # ! 注意すべき点としてはマージした事実は消えないということです。 そのため、そのブランチを再度マージしたとしても、取り込みが発生しません。
+        # ? その場合は新しくブランチを作成してマージするようにしましょう。 ワイ???複製したブランチからマージすればいいけるん？
+
+
+        # リモートに間違ったマージコミットをpushしてしまった。ので削除したい。
+        # git reset --hard HEAD~1 1こ前のコミットをクリア
+        # 下記、--forceを入れないと、リモートが最新なのでpullしろと怒られた。pullしたら上記resetも戻される笑
+        # git push origin 1.58-main --force 
+        # !「コミットを取り消した」履歴も残らない.一度pushなどを行って、ほかの開発者に公開されているコミットを取り消すことは絶対にしてはいけません。
+
+        # git reset --hard ORIG_HEAD
+        # git reset --hard 戻りたいコミットID
 
         # stash
-        sta = git stash apply
+        st = stash
+        sta = stash apply
         # git stash pop  -> apply&delete
 
         # git stash list
-        stm = git stash save
+        # stash save "comment"
         # git stash clear // 全削除
 
         #  git diff stash@{0} //差分
 
         # specify file
         # usage: git stash push -m "stash name" -- filepath
-        stf = git stash push -- 
+        stf = stash push -- 
 
 
         # merge 関連
-        mg = git merge --no-commit --no-ff
+        mg = merge --no-commit --no-ff
         # - dry-runする
         # 1 コンフリクトするか確認できる
         # git merge --no-commit --no-ff <branch>

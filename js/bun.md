@@ -1,0 +1,2 @@
+- update
+    bun upgrade

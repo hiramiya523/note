@@ -1,9 +1,9 @@
 - bun
-bun create svelte@latest app
-cd project-name
-bun install
-bun --bun run dev
-bun run build
+    bun create svelte@latest app
+    cd project-name
+    bun install
+    bun --bun run dev
+    bun run build
 
 
 - biome

@@ -1,5 +1,6 @@
 - ログイン
 psql -U user
+psql -U user -d database_name
 
 - データベース一覧確認
 \l
