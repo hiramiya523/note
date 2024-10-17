@@ -39,14 +39,11 @@
         # 3. git co -b hoge origin/hoge (git co -b hoge)
         # 4. 確認 git branch -vv
 
-        # ローカルだけで作りたいときは、
-        # git checkout -b hoge だけ
-
         # リモートになく、手元に残ったブランチをクリア
         # git fetch --prune
 
         #  rm cached
-        # git rm -r --cached .
+        # git rm -r --cached . && git add .
 
         # ローカルで作ったブランチを、リモートにプッシュ
         # 1. git checkout -b new-branch main
@@ -58,9 +55,8 @@
         # コミット数
         cnt = git rev-list --count
 
-# ステージング取り消し
+        # ステージング取り消し
         # git reset HEAD // 全部
-
         # コミット取り消し
         #  git reset --soft HEAD^ // 直前のみ
         # コミット履歴ごと消せる
@@ -87,18 +83,20 @@
         # stash
         st = stash
         sta = stash apply
-        # git stash pop  -> apply&delete
-
+        # git stash pop 
+        # git stash clear 
         # git stash list
-        # stash save "comment"
-        # git stash clear // 全削除
-
         #  git diff stash@{0} //差分
+        # git stash pop stash@{N}
+        # git stash drop stash@{N}
+        # abort: git reset HEAD . 
 
         # specify file
         # usage: git stash push -m "stash name" -- filepath
         stf = stash push -- 
 
+        # include untracked files.
+#  git stash save -u "メッセージ"
 
         # merge 関連
         mg = merge --no-commit --no-ff

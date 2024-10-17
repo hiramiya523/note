@@ -5,6 +5,10 @@ bun add -D drizzle-kit
 pnpm add drizzle-orm postgres
 pnpm add -D drizzle-kit
 
+- schema定義をzod validationに利用したいとき
+https://orm.drizzle.team/docs/zod
+pnpm add drizzle-zod zod
+
 pnpm i dotenv
 <!-- Note: Connection作るのに必要 -->
 pnpm add -D  @types/pg

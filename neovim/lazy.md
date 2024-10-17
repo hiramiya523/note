@@ -1,12 +1,12 @@
-git clone https://github.com/LazyVim/starter ~/.config/nvim
-rm -rf ~/.config/nvim/.git
+## direcotry tree 
+<leader>e : toggle tree display.
 
-- add pluguins
-/home/ubuntu/.config/nvim/lua/plugins
+a : create new file
+
+## troble shuting
+:messages
 
 # uninstall lzay vim
-- rm 
-
 1. rm -fr ~/.config/nvim
 
 data: ~/.local/share/nvim/lazy
