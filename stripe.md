@@ -1,4 +1,9 @@
-# 参考
+# Stripe
+
+手数料: 3.6%
+
+## 参考
+
 - サーバサイドAPIドキュメント
 https://docs.stripe.com/api
 
@@ -43,17 +48,52 @@ https://qiita.com/hideokamoto/items/d2ad3b1a3ec101c785a9
 
 https://docs.stripe.com/payments/during-payment/charge-shipping
 
-```
+```a
 PaymentIntentの場合と異なり、Checkoutセッションの場合は、Product / PriceのデータをStripeに登録する必要があります。
 その代わりに合計金額の計算を行う必要がなくなります。
 https://qiita.com/hideokamoto/items/f0304cb005f276e35d43
 ```
+
 ⇒ つまり、Checkoutセッションは使えない？
 
-Elements を組み合わせる
+- Elements を組み合わせる
 https://docs.stripe.com/payments/payment-element
 Payment Element はその他の Element と連携します。たとえば、このフォームは支払い情報の自動入力に 1 つの追加エレメント、配送先住所の収集にもう 1 つの追加エレメントを使用しています。
 
-
-github 公式サンプル
+- /github 公式サンプル
 https://github.com/stripe-samples/accept-a-payment/tree/main/payment-element
+
+## code
+
+- `.js`は、deferで読み込まないと、上手くレンダリング出来ない。
+aa
+
+- 住所入力element
+
+```js
+const elements = stripe.elements();
+const addressElement= elements.create("address", {
+  mode:"shipping",
+  allowedCountries: ['JP'],
+  autocomplete: {
+    mode: "automatic"
+  },
+  fields: {
+    phone: "always"
+  },
+  validation: {
+    phone: {
+      required: 'always',
+    },
+  },
+});
+addressElement.mount("#address-element");
+addressElement.on('change', (event) => {
+  console.log(event.value)
+  if (event.complete) {
+    console.log('Address is complete:', event);
+  } else {
+    console.log('Address not complete or changed:', event.error);
+  }
+});
+```

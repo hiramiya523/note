@@ -1,32 +1,47 @@
-# issue
-## 画像の大きさを親要素に合わせたい
+# overview
+
+## issue
+
+### 画像の大きさを親要素に合わせたい
+
 ### 自分のイメージ
+
   最も近い親要素のh,wに合わせるには、
-  width :100%とか、 
+  width :100%とか、
 
+## interisting & serarch
 
-# interisting & serarch
-  - fit-content
-  利用可能な空間に対して fit-content 式を使用し、指定された引数に置き換えられます。
-  すなわち min(max-content, max(min-content, <length-percentage>)) です。
+- fit-content
+利用可能な空間に対して fit-content 式を使用し、指定された引数に置き換えられます。
+すなわち min(max-content, max(min-content, length-percentage)) です。
 
-  - object-fit:cover
-    このような指定だと、画像の比率を無視した大きさの指定になる。
-    ```
-     width: 100%;
-     height: 100%;
-    ```
-    `object-fit: cover`だと、画像比率を維持しつつはみ出る部分をカット.
+- object-fit:cover
+  このような指定だと、画像の比率を無視した大きさの指定になる。
+
+  ```css
+    width: 100%;
+    height: 100%;
+  ```
+
+  `object-fit: cover`だと、画像比率を維持しつつはみ出る部分をカット.
 
 ## アスペクト比率
+
   画面や画像の横と縦の長さの比率のことを言います。
 
 ## 比率
+
   h-fullを指定した時、親の幅を超えている気がした。
   が、そうではなく、親のパディングを含めた高さに合っていた。
 
+## flex & gap
 
-# CSS 設計
+flexコンテナには、正の余白、負の余白があるのでこの理解は必須。
+
+フレックスボックスでは、アイテムの max-content の寸法を flex-basis として使用します。
+
+## CSS 設計
+
 1. width -> max-width
   width の指定をすると、画面幅が縮んだときにコンテンツが収まりきらなくなる可能性が出てくるので、
   幅が変化する方が困るという時以外はなるべく指定しないようにしています。

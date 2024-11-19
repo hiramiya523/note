@@ -6,6 +6,8 @@ vim -R <file>: read only mode.
 
 ## コマンド
 
+:e バッファの再読み込み
+
 ## 移動系
 
 行先頭(インデント無視): 0
@@ -35,11 +37,25 @@ H : move the coursor to the top of the display screen.
 L: move the coursor to the bottom of
 M: Middle
 
-zz: 現在のカーソル行を画面中央に。
-
 gj / gk : Vertical movement on display.(ignoring line breaks)
 
+zz: 現在のカーソル行を画面中央に。
+zt: top
+
+カーソル移動なしの表示ウィンドウスクロール
+ctl e
+ctl y
+
+fだけじゃなくて、tも使ってクレメンス
+
+メソッド移動
+[m, ]m(M)で、メソッド移動できるけど、
+vscodeは対応していないっぽい。。。
+
+dis: sはsentenceらしいけど、どうなるんだ？ (das)
+
 ### cursor word move
+
 単語末尾:e
 first letter of the word: b
 
@@ -50,7 +66,6 @@ move to n line : n + G
 
 ## レジスタ
 xやyやdの操作時にはレジスタという領域に保存されるようになっている
-
 
 https://ylabdesk.com/vim-register-commands
 無名レジスタから取り出し、カーソルの後方に貼り付け	p
@@ -71,8 +86,6 @@ https://ylabdesk.com/vim-register-commands
 can be used: 使う主体が明確でない場合や、用途に焦点を当てたい場合
 
 can use: 使う人や主体が明確な場合
-
-
 
 ## edit file
 :save	ファイルを保存する
@@ -96,6 +109,10 @@ yiw: カーソル上の単語をコピー。
 yi": ダブルクォーテーションの内部をコピー。
 yit: HTMLタグの内部をコピー
 
+※html編集激やば
+
+dat, vatはやっべぇ。
+タグ対応で、削除、選択できるぞ。じゃあ、catもいけるってことか。
 
 `https://gitlab.nu-face.jp/nu-face/ontra/middle-db/-/issues/37`
 => di`
@@ -118,7 +135,16 @@ delete the word at the cursor position : diw
 delete from current cuour: d^
 : d$
 
+cc/S: 現在の行を削除して、insert mode.
+
+dap: 段落削除
+
+折り返し行移動
+gj
+gk
+
 ### 連結
+
 スペース無し：g + j
 スペースあり: shift + j
 
@@ -195,12 +221,22 @@ vimmerもこれ以上あなたの命を狙おうとはしないはずです。
 
 vscode上で選択した文字は、vimのvisualモードとなる.
 
-## 気づき
-df{X} :これ凄い。dとf移動の組み合わせヤバイわ。
-⇒ これ、もし一度で目的の位置まで消せなくとも、
-  `.`で繰り返せるから、軽率にできるね。
+## 気づき, 経験
 
-## nvim 
+- df{X} :これ凄い。dとf移動の組み合わせヤバイわ。
+    ⇒ これ、もし一度で目的の位置まで消せなくとも、
+    `.`で繰り返せるから、軽率にできるね。
+
+- 5 + j/k で、適当にちょっと上下行きたい時に便利かも？
+    数字は、押しやすいので構わない。
+
+- 削除は、dwを連打するのが安パイ？
+
+- 横移動は、基本`w/b ->末尾移動でe` でok.
+- 途上だけど、上下は, H/L/M とjk, #*を駆使すれば、表示領域の移動は十分な気もする
+
+
+## nvim
 
 これvimでも使えるのかな？
 :sp、:vsp

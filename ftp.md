@@ -27,11 +27,8 @@
 
 サーバ側にvsftpdが必要なので、状態確認
 systemctl status vsftpd
-
 vim /etc/vsftpd.conf
-
 touch /etc/vsftpd.user_list
-
 systemctl start vsftpd
 
 ufw status verbose
