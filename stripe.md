@@ -54,7 +54,7 @@ PaymentIntentの場合と異なり、Checkoutセッションの場合は、Produ
 https://qiita.com/hideokamoto/items/f0304cb005f276e35d43
 ```
 
-⇒ つまり、Checkoutセッションは使えない？
+⇒ つまり、配送料金を登録したい場合はCheckoutセッションは使えない？
 
 - Elements を組み合わせる
 https://docs.stripe.com/payments/payment-element
