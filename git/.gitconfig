@@ -83,6 +83,7 @@
         # stash
         st = stash
         sta = stash apply
+        stl = stash list --date=local
         # git stash pop 
         # git stash clear 
         # git stash list
@@ -108,5 +109,22 @@
         # 2 取り消し
         # git merge --abort
 
+
+        # 作業ブランチに、親ブランチの変更を取り込む
+        # git checkout <親ブランチ> && git pull
+        # git switch <作業ブランチ>
+        # git rebase <親ブランチ>
+
+        # rebase破棄？ 
+        # git rebase --abort
+        # rebaseコンフリクト解消の参考
+        # https://zenn.dev/mikaneko/articles/0fe1daf2e8a987
+
         # 派生元確認
         # git show-branch | grep '*' | grep -v "$(git rev-parse --abbrev-ref HEAD)" | head -1 | awk -F'[]~^[]' '{print $2}'
+
+# ローカル掃除
+# git fetch --prune && git branch -vv | grep ': gone]' | awk '{print $1}' | xargs -p -n 1 git branch -D
+
+        # リモートブランチとの差分
+        # git diff origin/xxx-remote-branch

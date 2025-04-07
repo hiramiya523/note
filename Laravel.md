@@ -1,17 +1,34 @@
-# 問題
+# Laravel
+
+## テスト
+
+### 基礎・概要・用語
+
+- スイート
+    一式という意味
+
+Unit    : 単体
+Feature : 機能
+
+## 問題
+
 providersで
 `'driver' => 'eloquent'`を指定すると、パスワードが常に期待される。
+
 ```php auth.php
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
 ```
+
 Auth::attempt()が常にパスワードを参照している状態。
 
-# 解決方法
+### 解決方法
+
 password参照している部分をオーバーライドした、新しいProviderを作る.
-```php 
+
+```php
 <?php
 
 namespace App\Providers;
@@ -66,4 +83,3 @@ class GuestUserProvider extends EloquentUserProvider
     }
 }
 ```
-

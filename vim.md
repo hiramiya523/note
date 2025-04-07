@@ -39,7 +39,7 @@ M: Middle
 
 gj / gk : Vertical movement on display.(ignoring line breaks)
 
-zz: 現在のカーソル行を画面中央に。
+zz: 現在のカーソル行を画面中央になるように表示。
 zt: top
 
 カーソル移動なしの表示ウィンドウスクロール
@@ -91,7 +91,6 @@ can use: 使う人や主体が明確な場合
 :save	ファイルを保存する
 :saveas	ファイルを別名で保存する
 
-前方一文字削除 : shift + x
 
 y->w: copy word
 p: paste
@@ -117,23 +116,14 @@ dat, vatはやっべぇ。
 `https://gitlab.nu-face.jp/nu-face/ontra/middle-db/-/issues/37`
 => di`
 
-ノーマルモードでci'とタイプすると、シングルクオートの内部にある文字列を削除して挿入モードに入ります。
-ca'とタイプすると、シングルクオートで囲まれた文字列をシングルクオートごと削除して挿入モードに入ります。
-
 ci"であればダブルクオートで囲まれた文字列を、ci{であれば中括弧({})で囲まれた文字列を、citであればHTMLタグで囲まれた文字列をそれぞれ編集できます。
 
 cの変わりにdを使ってdi'とタイプするとシングルクオートの内部にある文字列を削除します。(挿入モードには入らない)
 
 va'であれば、シングルクオートで囲まれた文字列をシングルクオートごとビジュアル選択します。。
 
-y$: 現在の位置から行末までコピー
-
-nyy: 行数コピー
 ndd: 行数カット
 delete the word at the cursor position : diw
-
-delete from current cuour: d^
-: d$
 
 cc/S: 現在の行を削除して、insert mode.
 

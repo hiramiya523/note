@@ -5,6 +5,8 @@
     bun --bun run dev
     bun run build
 
+最新はこっちか？svこまんどできたし
+bunx sv create svelte-sample
 
 - biome
 bun add --dev --exact @biomejs/biome

@@ -10,16 +10,37 @@ https://docs.stripe.com/api
 - JSのAPIドキュメント
 https://docs.stripe.com/js
 
-# 用語
 ## PaymentIntent
- 顧客の支払いライフサイクルを追跡し、支払いの試行失敗があった場合にはその記録を残して顧客への請求に重複が発生しないようにします。
- レスポンスで PaymentIntent の client secret を返して、クライアントで支払いを完了します。
+
+ 顧客の支払いライフサイクルを追跡し、
+ 支払いの試行失敗があった場合にはその記録を残して顧客への請求に重複が発生しないようにします。
+ `レスポンスで PaymentIntent の client secret` を返して、`クライアントで支払いを完了`します。
+
+### ライフサイクル(ステータス)
+
+参考
+https://docs.stripe.com/payments/paymentintents/lifecycle
+
+requires_payment_method
+  - 請求額が確定した段階で生成を推奨
+
+
+`requires_action` -> 3Dセキュアなど、支払い時の追加アクションが必要なステータス。
+
+- `canceld`
+  - `processing`or`succeeded`に移行前、任意のタイミングでキャンセルを実施し移行。
+  - キャンセルで売上はリリース
+  - 角な確
+
+
+## 3Dセキュア
+
+PaymentIntentと、Setupintentで管理する。(どっちかを利用？)
 
 ## 決済フロー
 
 1. PaymentIntentを作成し、顧客の支払いライフサイクルを始める
 2. PaymentIntentの作成で生成される、clientSecretをクライアントに返す。
-
 
 > Stripe は、収集した住所情報と支払い方法を組み合わせて、PaymentIntent を作成します。
 
@@ -33,8 +54,40 @@ checkout
 - ダミーデータ
 `4242 4242 4242 4242`
 
+オーソリしてから、キャプチャーする. つまり与信を取れるということ？
+https://docs.stripe.com/payments/place-a-hold-on-a-payment-method
 
-# メモ
+オーソリとキャプチャーを分離することを示すには、PaymentIntent の作成時に、capture_method に manual を指定します
+
+```txt
+決済を作成する際に、対象の支払い方法を保留することで、売上をリザーブして後からキャプチャーすることができます。
+たとえば、ホテルではゲストのチェックイン前に決済を全額オーソリし、ゲストのチェックアウト時にその金額をキャプチャーするといったことがよく行われます。これは、手動キャプチャーと呼ばれることもあります。
+
+決済のオーソリにより、顧客の支払い方法で金額が確保されて保証されます
+```
+
+```php
+$stripe = new \Stripe\StripeClient('sk_test_09l3shTSTKHYCzzZZsiLl2vA'
+);
+
+$stripe->paymentIntents->create
+([
+  'amount
+' => 1099,
+  'currency
+' => 'usd',
+  'payment_method_types
+' => ['card'],
+  'capture_method
+' => 'manual',
+]);
+```
+
+サーバーで支払いを確定する
+https://docs.stripe.com/payments/quickstart
+-> 支払い情報を動的に更新する
+
+## メモ
 - この記事によると、２回目以降の決済を簡略化できるような記述がある
 https://qiita.com/hideokamoto/items/d2ad3b1a3ec101c785a9
 ⇒2024の記事だ！！
@@ -97,3 +150,21 @@ addressElement.on('change', (event) => {
   }
 });
 ```
+
+# 時系列順に記録しないと、蓄積がないわ
+
+## 241218
+
+checkoutSessionは動的な登録を出来ない。
+
+PaymentIntentを利用して決済を進める。
+入力はStripeElementで受け取る。
+
+## 250220
+
+やりたいこと。
+
+Customer Objectに、住所情報を登録。
+⇒ つまり、住所情報をStripeに送る必要あり。
+
+Payment Intent で3D Sec認証

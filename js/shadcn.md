@@ -3,6 +3,7 @@ https://www.shadcn-svelte.com/docs/installation/sveltekit
 
 1. tailwind
   pnpm dlx @svelte-add/tailwindcss@latest
+
 2. pnpm install
 
 3. Configure components.json
@@ -54,3 +55,8 @@ https://www.shadcn-svelte.com/docs/installation/sveltekit
     └  Success! Project initialization completed.
     ```
 1. pnpm dlx shadcn-svelte@latest add button
+
+
+# bun でやる 
+
+bunx sv add tailwind
