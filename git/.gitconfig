@@ -39,9 +39,6 @@
         # 3. git co -b hoge origin/hoge (git co -b hoge)
         # 4. 確認 git branch -vv
 
-        # リモートになく、手元に残ったブランチをクリア
-        # git fetch --prune
-
         #  rm cached
         # git rm -r --cached . && git add .
 

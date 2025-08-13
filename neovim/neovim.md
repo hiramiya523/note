@@ -1,3 +1,10 @@
+# キー表現
+  <C-x>
+  ctrl + x です．<C-c>ならctrl+c，<C-T> の場合は大文字も加味して ctrl+shift+t です．
+  <BS>
+  backspace キーです．
+  <CR>
+  Carriage Return key の略でいわゆる enter キーです．
 
 
 # plugins
@@ -31,7 +38,7 @@ ctrl + ? : toggle show terminal.
 タブ移動： `[`or`]` + b 
 ⇒ nvim で個々のファイルを開いているのは別々のバッファなのかもしれない
   このコマンドは、バッファ移動である。
-⇒ おい。shift + H (L)で移動できるぜ。
+⇒ おい。`shift + H (L)`で移動できるぜ。
 
 
 - ファイルリロード
@@ -41,11 +48,21 @@ ctrl + ? : toggle show terminal.
 
 ctrl + "⇒ これは、範囲選択を広げていくかんじかな
 
+
+- 画面分割
+- 垂直: ctr + w, v
+
+# jup 
+- gd : 関数の定義に移動
+
 #### ファイル編集
 
 gcc : コメントトグル
 
 ## neo-tree
+
+<!-- 日本語情報の詳細-->
+https://qiita.com/Tsuyopon-1067/items/54bdfb5a24e62d1627ea
 
 C-w,h : treeに戻る
 C-h/l : ツリーとファイルを行き来する

@@ -25,3 +25,16 @@ https://github.com/yuru7/HackGen/releases/tag/v2.10.0
 ## 参考
 
 https://qiita.com/garchomp_otoka/items/8a9bb5f87af12e471906
+
+
+## install
+
+1. git clone https://github.com/NvChad/starter ~/.config/nvim && nvim
+1. nvim
+1. :MasonInstallAll 
+
+## uninstall
+
+rm -rf ~/.config/nvim
+rm -rf ~/.local/state/nvim
+rm -rf ~/.local/share/nvim

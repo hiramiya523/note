@@ -168,3 +168,7 @@ Customer Objectに、住所情報を登録。
 ⇒ つまり、住所情報をStripeに送る必要あり。
 
 Payment Intent で3D Sec認証
+
+## 250716
+今日は電話番号、メールアドレスを入力してもらうぞ！
+=> 4cy:
